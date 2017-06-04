@@ -10,16 +10,18 @@ const oauth2 = simpleOauthModule.create({
     secret: 'example-server',
   },
   auth: {
-    tokenHost: 'http://localhost:8888',
-    tokenPath: '/api/v1/token',
-    authorizePath: '/api/v1/authorize',
+    //tokenHost: 'http://localhost:8888',
+    tokenHost: 'http://138.68.108.146/',
+    tokenPath: '/token',
+    authorizePath: '/authorize',
   },
 });
 
 // Authorization uri definition
 const authorizationUri = oauth2.authorizationCode.authorizeURL({
-  redirect_uri: 'http://localhost:3000/callback',
-  scope: 'workspaces',
+  //redirect_uri: 'http://localhost:3000/callback',
+  redirect_uri: 'https://incom-oauth-example-authcode.herokuapp.com/callback',
+  //scope: '',
   state: '3(#0/!~',
 });
 
@@ -59,8 +61,8 @@ app.get('/', (req, res) => {
   res.send('Hello<br><a href="/auth">Log in with Incom</a>');
 });
 
-app.listen(3000, () => {
-  console.log('Express server started on port 3000'); // eslint-disable-line
+app.listen(80, () => {
+  console.log('Express server started on port 80'); // eslint-disable-line
 });
 
 
