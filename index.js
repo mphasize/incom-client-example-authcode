@@ -3,6 +3,9 @@
 const express = require('express');
 const simpleOauthModule = require('simple-oauth2');
 
+const port = process.env.PORT || 3000;
+
+
 const app = express();
 const oauth2 = simpleOauthModule.create({
   client: {
@@ -61,7 +64,7 @@ app.get('/', (req, res) => {
   res.send('Hello<br><a href="/auth">Log in with Incom</a>');
 });
 
-app.listen(80, () => {
+app.listen(port, () => {
   console.log('Express server started on port 80'); // eslint-disable-line
 });
 
